@@ -38,19 +38,23 @@ let Player = function(x,y){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
     Player.prototype.handleInput = function(e){
-        if(e =='left'){
+        if(e =='left' && this.x > 10){
+            console.log(this.x);
             this.x -=20;
             this.render();
         }
-        else if(e =='right'){
+        else if(e =='right' && this.x < 400){
+            console.log(this.x);
             this.x +=20;
             this.render();
         }
-        else if(e =='up'){
+        else if(e =='up' && this.y > 0){
+            console.log(this.y);
             this.y -=20;
             this.render();
         }
-        else if(e =='down'){
+        else if(e =='down' && this.y < 400){
+            //console.log(this.y);
             this.y +=20;
             this.render();
         }
