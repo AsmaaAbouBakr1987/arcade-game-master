@@ -30,14 +30,30 @@ let Player = function(x,y){
     this.x = x;
     this.y = y;
 
-    Player.prototype.update = function(){
-
+    Player.prototype.update = function(x,y){
+        
+        this.render();
     };
     Player.prototype.render = function(){
         ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
     };
-    Player.prototype.handleInput = function(){
-    
+    Player.prototype.handleInput = function(e){
+        if(e =='left'){
+            this.x -=20;
+            this.render();
+        }
+        else if(e =='right'){
+            this.x +=20;
+            this.render();
+        }
+        else if(e =='up'){
+            this.y -=20;
+            this.render();
+        }
+        else if(e =='down'){
+            this.y +=20;
+            this.render();
+        }
     };
 }
 
