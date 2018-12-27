@@ -42,7 +42,8 @@ let Player = function(x,y){
     this.sprite = 'images/char-princess-girl.png';
     this.x = x;
     this.y = y;
-
+}
+let GameScore =0;
     Player.prototype.update = function(x,y){
         
         this.render();
@@ -71,8 +72,18 @@ let Player = function(x,y){
             this.y +=20;
             this.render();
         }
+        this.score();
     };
-}
+    Player.prototype.score = function(){
+        if(this.y <20 && this.y >= 0){
+            GameScore+= 10;
+            console.log(GameScore);
+            player.y = 400;
+            player.x = 200;
+            let ScoreTxt = document.getElementById("score");
+            ScoreTxt.textContent= GameScore;
+        }
+    }
 
 let player = new Player(200,400);
 
