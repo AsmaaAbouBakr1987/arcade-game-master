@@ -24,9 +24,8 @@ Enemy.prototype.update = function(dt) {
     if (this.x > 700){
         this.x = 0;
     }else{
-   this.x+=200*dt ;
-  // this.render();
-   // console.log(this.x);
+    this.x+=200*dt ;
+    //console.log(this.x);
     }
 };
 
@@ -63,7 +62,7 @@ let Player = function(x,y){
             this.render();
         }
         else if(e =='up' && this.y > 0){
-            console.log(this.y);
+           // console.log(this.y);
             this.y -=20;
             this.render();
         }
@@ -77,6 +76,27 @@ let Player = function(x,y){
 
 let player = new Player(200,400);
 
+let checkCollisions = function(){
+    //console.log(player.y);
+    if(player.y < 260 && player.y >180){
+        //console.log('enemy3 ', enemy3.x, 'player ', player.x );
+        if ( player.x >= enemy3.x -40 && player.x <=enemy3.x + 40 ){
+            //console.log("true");
+            player.y = 400;
+            player.x = 200;
+        }
+    }else if (player.y < 180 && player.y >100){
+        if ( player.x >= enemy2.x -40 && player.x <=enemy2.x + 40 ){
+            player.y = 400;
+            player.x = 200;
+        }
+    }else if (player.y < 100 && player.y >20){
+        if ( player.x >= enemy1.x -40 && player.x <=enemy1.x + 40 ){
+            player.y = 400;
+            player.x = 200;
+        }
+    }
+}
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
