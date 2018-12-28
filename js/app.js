@@ -43,7 +43,7 @@ let Player = function(x,y){
     this.x = x;
     this.y = y;
 }
-let GameScore =0;
+    let GameScore =0;
     Player.prototype.update = function(x,y){
         
         this.render();
