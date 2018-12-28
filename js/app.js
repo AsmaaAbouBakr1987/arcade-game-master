@@ -55,22 +55,22 @@ let GameScore =0;
         if(e =='left' && this.x > 10){
             console.log(this.x);
             this.x -=20;
-            this.render();
+
         }
         else if(e =='right' && this.x < 400){
             console.log(this.x);
             this.x +=20;
-            this.render();
+
         }
         else if(e =='up' && this.y > 0){
            // console.log(this.y);
             this.y -=20;
-            this.render();
+
         }
         else if(e =='down' && this.y < 400){
             //console.log(this.y);
             this.y +=20;
-            this.render();
+
         }
         this.score();
     };
