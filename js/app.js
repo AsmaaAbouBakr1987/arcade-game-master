@@ -44,6 +44,9 @@ let Player = function(x,y){
     this.y = y;
 }
     let GameScore =0;
+    let flag = true;
+    const TILE_WIDTH = 101
+    const TILE_HEIGHT = 83;
     Player.prototype.update = function(x,y){
         
         this.render();
@@ -54,32 +57,40 @@ let Player = function(x,y){
     Player.prototype.handleInput = function(e){
         if(e =='left' && this.x > 10){
             console.log(this.x);
-            this.x -=20;
+            this.x -=TILE_WIDTH;
 
         }
         else if(e =='right' && this.x < 400){
             console.log(this.x);
-            this.x +=20;
+            this.x +=TILE_WIDTH;
 
         }
         else if(e =='up' && this.y > 0){
-           // console.log(this.y);
-            this.y -=20;
+            console.log(this.y);
+            this.y -=TILE_HEIGHT;
 
         }
         else if(e =='down' && this.y < 400){
-            //console.log(this.y);
-            this.y +=20;
+            console.log(this.y);
+            if(this.y>315 ){
+                flag=true;
+                console.log(flag);
+            }
+            this.y +=TILE_HEIGHT;
 
         }
         this.score();
     };
+    Player.prototype.reset = function(){
+        flag=true;
+        this.y = 400;
+        this.x = 200;
+    }
     Player.prototype.score = function(){
-        if(this.y <20 && this.y >= 0){
+
+        if(this.y <67 && flag ==true){
+            flag = false;
             GameScore+= 10;
-            console.log(GameScore);
-            player.y = 400;
-            player.x = 200;
             let ScoreTxt = document.getElementById("score");
             ScoreTxt.textContent= GameScore;
         }
@@ -90,21 +101,16 @@ let player = new Player(200,400);
 let checkCollisions = function(){
     //console.log(player.y);
     if(player.y < 260 && player.y >180){
-        //console.log('enemy3 ', enemy3.x, 'player ', player.x );
         if ( player.x >= enemy3.x -40 && player.x <=enemy3.x + 40 ){
-            //console.log("true");
-            player.y = 400;
-            player.x = 200;
+            player.reset();
         }
     }else if (player.y < 180 && player.y >100){
         if ( player.x >= enemy2.x -40 && player.x <=enemy2.x + 40 ){
-            player.y = 400;
-            player.x = 200;
+            player.reset();
         }
     }else if (player.y < 100 && player.y >20){
         if ( player.x >= enemy1.x -40 && player.x <=enemy1.x + 40 ){
-            player.y = 400;
-            player.x = 200;
+            player.reset();
         }
     }
 }
